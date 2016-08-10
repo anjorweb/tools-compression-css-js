@@ -3,7 +3,10 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
-            "project": {
+            options:{
+                mangle:true
+            },
+            "task1": {
                 "files": {
                     'html/js/index.min.js': [
                         "html/js/libs/zepto.min.js",
