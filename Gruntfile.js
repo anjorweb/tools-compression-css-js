@@ -6,7 +6,7 @@ module.exports = function (grunt) {
             options:{
                 mangle:true
             },
-            "task1": {
+            "project": {
                 "files": {
                     'html/js/index.min.js': [
                         "html/js/libs/zepto.min.js",
@@ -32,10 +32,30 @@ module.exports = function (grunt) {
                     ]
                 }
             }
+        },
+        //压缩HTML
+        htmlmin: {
+            dist:{
+                options: {
+                    removeComments: true,
+                    removeCommentsFromCDATA: true,
+                    collapseWhitespace: true,
+                    collapseBooleanAttributes: true,
+                    removeAttributeQuotes: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true,
+                    removeEmptyAttributes: true,
+                    removeOptionalTags: true
+                },
+                files: {
+                    'html/index2.html': ['html/index.html']
+                }
+            }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     // 默认任务
-    grunt.registerTask('default', ['uglify', 'cssmin']);
+    grunt.registerTask('default', ['uglify', 'cssmin', 'htmlmin']);
 };
